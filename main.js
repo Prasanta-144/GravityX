@@ -349,7 +349,6 @@ $('resume-btn').onclick = () => { ui.pause.classList.add('hidden'); isPaused = f
         try {
           const p = req.call(el);
           if (p && p.catch) p.catch(err => console.warn('[fullscreen] request failed:', err));
-          // MOBILE: try to lock landscape once we're in fullscreen
           if (p && p.then) {
             p.then(() => {
               if (screen.orientation && screen.orientation.lock) {
@@ -360,8 +359,6 @@ $('resume-btn').onclick = () => { ui.pause.classList.add('hidden'); isPaused = f
         } catch (err) {
           console.warn('[fullscreen] request threw:', err);
         }
-      } else {
-        console.warn('[fullscreen] Fullscreen API not supported in this environment');
       }
     } else {
       const exit = document.exitFullscreen
@@ -449,6 +446,7 @@ const steerKnob = document.getElementById('touch-steer-knob');
 // FORCE TOUCH CONTROLS TO SHOW
 touchControls.classList.remove('hidden');
 
+// SINGLE declaration of variables (Fix for Cloudflare build)
 let steerActive = false, steerStartX = 0, steerStartY = 0, touchSteerValue = 0;
 
 steerPad.addEventListener('touchstart', (e) => {
@@ -594,7 +592,6 @@ const menuPos = new THREE.Vector3();
 function animate() {
   const dt = Math.min(clock.getDelta(), 0.1);
 
-  // MOBILE: adapt resolution to frame time
   adaptResolution(dt);
 
   if (race) {
