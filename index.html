@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Added maximum-scale and viewport-fit for notched phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#000004">
   <title>Gravity X</title>
@@ -24,35 +23,32 @@
     .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; opacity: .85; }
     .box { background: var(--bg); border: 1px solid var(--cy); padding: 10px 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
 
-    /* Mobile HUD adjustments */
-    #top-hud { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; align-items: stretch; text-align: center; width: 95%; max-width: 600px; justify-content: center; }
-    #top-hud .big { font-size: 24px; font-weight: bold; font-family: monospace; line-height: 1.1; }
-    #top-hud .sub { font-size: 10px; font-family: monospace; color: #fff; text-shadow: none; margin-top: 4px; white-space: nowrap; }
-    #timer-box { border-width: 2px; padding: 10px; flex: 1; }
-    #timer-value { font-size: 24px; }
+    /* Desktop HUD (Default) */
+    #top-hud { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px; align-items: stretch; text-align: center; width: auto; }
+    #top-hud .big { font-size: 34px; font-weight: bold; font-family: monospace; line-height: 1.1; }
+    #top-hud .sub { font-size: 13px; font-family: monospace; color: #fff; text-shadow: none; margin-top: 4px; white-space: nowrap; }
+    #timer-box { border-width: 2px; padding: 10px 34px; flex: none; }
+    #timer-value { font-size: 40px; }
 
-    #leaderboard { position: absolute; top: 10px; left: 10px; min-width: 120px; padding: 8px 10px; font-size: 11px; font-family: monospace; }
-    #leaderboard .row { display: flex; gap: 6px; padding: 2px 0; color: #cfe; text-shadow: none; }
+    #leaderboard { position: absolute; top: 20px; left: 20px; min-width: 180px; padding: 10px 14px; font-size: 14px; font-family: monospace; }
+    #leaderboard .row { display: flex; gap: 8px; padding: 2px 0; color: #cfe; text-shadow: none; }
     #leaderboard .row.me { color: var(--cy); font-weight: bold; text-shadow: 0 0 8px var(--cy); }
-    #leaderboard .dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 4px; flex: none; }
+    #leaderboard .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; flex: none; }
 
-    /* Hide minimap on very small screens to save space */
-    #minimap-box { position: absolute; top: 10px; right: 10px; padding: 6px; display: none; }
-    @media (min-width: 600px) { #minimap-box { display: block; } }
-    #minimap { display: block; width: 120px; height: 120px; }
+    #minimap-box { position: absolute; top: 20px; right: 20px; padding: 6px; display: block; }
+    #minimap { display: block; width: 170px; height: 170px; }
 
-    #toast { position: absolute; top: 24%; left: 50%; transform: translateX(-50%); font-size: 20px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; opacity: 0; transition: opacity .25s; text-align: center; white-space: nowrap; }
+    #toast { position: absolute; top: 24%; left: 50%; transform: translateX(-50%); font-size: 30px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; opacity: 0; transition: opacity .25s; text-align: center; white-space: nowrap; }
     #toast.show { opacity: 1; }
 
-    #countdown { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-size: 100px; font-weight: bold; color: #ff0055; text-shadow: 0 0 30px #ff0055; z-index: 20; pointer-events: none; text-align: center; white-space: nowrap; }
+    #countdown { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-size: 150px; font-weight: bold; color: #ff0055; text-shadow: 0 0 30px #ff0055; z-index: 20; pointer-events: none; text-align: center; white-space: nowrap; }
     #countdown.go { color: #33ff88; text-shadow: 0 0 30px #33ff88; }
 
-    /* Bottom HUD - Moved up to avoid touch controls */
-    #bottom-hud { position: absolute; bottom: 190px; left: 10px; right: 10px; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none; }
-    #speed-value { font-size: 30px; font-weight: bold; font-family: monospace; }
-    #speed-unit { font-size: 10px; margin-left: 4px; opacity: .8; }
+    #bottom-hud { position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none; }
+    #speed-value { font-size: 42px; font-weight: bold; font-family: monospace; }
+    #speed-unit { font-size: 14px; margin-left: 6px; opacity: .8; }
 
-    .bar-container { width: 120px; height: 12px; border: 1px solid var(--cy); background: rgba(0, 0, 0, 0.5); border-radius: 6px; overflow: hidden; margin-top: 2px; }
+    .bar-container { width: 300px; height: 20px; border: 1px solid var(--cy); background: rgba(0, 0, 0, 0.5); border-radius: 10px; overflow: hidden; margin-top: 5px; }
     #boost-bar { height: 100%; width: 100%; background: linear-gradient(90deg, #0055ff, #00ffff); box-shadow: 0 0 10px #00ffff; }
     #health-bar { height: 100%; width: 100%; background: linear-gradient(90deg, #ff0055, #ffaa00); box-shadow: 0 0 10px #ff0055; }
 
@@ -91,51 +87,117 @@
     .screen { position: absolute; inset: 0; z-index: 10; display: flex; overflow-y: auto; }
     #menu { background: transparent; pointer-events: none; align-items: center; justify-content: center; }
 
-    .panel { width: 100%; max-width: 480px; padding: 20px; background: rgba(3, 3, 12, 0.85); pointer-events: auto; border: 1px solid var(--cy); border-radius: 10px; margin: 20px; }
+    /* Desktop Menu Panel */
+    .panel { width: 480px; max-width: 100%; padding: 28px 34px; background: linear-gradient(90deg, rgba(3, 3, 12, 0.95) 0%, rgba(3, 3, 12, 0.8) 70%, rgba(3, 3, 12, 0) 100%); pointer-events: auto; border: none; border-radius: 0; margin: 0; }
 
-    .group { margin-bottom: 12px; }
-    .group > label { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cy); margin-bottom: 4px; }
-    .seg { display: flex; gap: 4px; flex-wrap: wrap; }
-    button { background: transparent; color: var(--cy); border: 1px solid var(--cy); padding: 8px 12px; font-size: 13px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; }
-    button:active { background: var(--cy); color: #000; }
-    .seg button { flex: 1; opacity: .6; }
-    .seg button.active { opacity: 1; background: rgba(0, 255, 255, 0.2); box-shadow: 0 0 10px var(--cy); }
-    button.primary { font-size: 18px; padding: 12px; flex: 1; background: rgba(0, 255, 255, 0.2); border-width: 2px; }
+    #menu-title { position: fixed; top: 50%; left: calc(50% + 240px); transform: translate(-50%, -50%); text-align: center; pointer-events: none; z-index: 1; width: 100%; }
+    #menu-title h1 { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 8rem; margin: 0; color: transparent; -webkit-text-stroke: 2px rgba(0, 255, 255, 0.4); text-shadow: 0 0 30px rgba(0, 255, 255, 0.2); letter-spacing: 12px; font-weight: 300; white-space: nowrap; }
+    #menu-title .tagline { font-size: 1rem; color: rgba(255, 255, 255, 0.4); letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; font-family: 'Segoe UI', Roboto, sans-serif; }
+
+    .group { margin-bottom: 14px; }
+    .group > label { display: block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--cy); margin-bottom: 6px; }
+    .seg { display: flex; gap: 6px; flex-wrap: wrap; }
+    button { background: transparent; color: var(--cy); border: 2px solid var(--cy); padding: 10px 16px; font-size: 15px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.15s; box-shadow: 0 0 10px rgba(0, 255, 255, 0.2); font-family: inherit; border-radius: 0; }
+    button:hover { background: var(--cy); color: #050510; box-shadow: 0 0 25px var(--cy); }
+    .seg button { flex: 1; padding: 8px 10px; font-size: 13px; opacity: .55; }
+    .seg button.active { opacity: 1; background: rgba(0, 255, 255, 0.22); box-shadow: 0 0 15px var(--cy); }
+    button.primary { font-size: 22px; padding: 14px 30px; flex: 1; background: transparent; border-width: 2px; }
+
+    .info { font-size: 13px; color: #bcd; margin-top: 6px; min-height: 34px; }
+    .stars { color: var(--mg); letter-spacing: 2px; }
+
+    .statrow { display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin: 4px 0; }
+    .statrow span { width: 74px; color: #9bd; }
+    .statrow .bar { flex: 1; height: 8px; background: rgba(255,255,255,.1); border-radius: 4px; overflow: hidden; }
+    .statrow .bar i { display: block; height: 100%; background: linear-gradient(90deg, #0055ff, #00ffff); }
+
+    .garage-panel { width: 500px; padding: 40px; background: linear-gradient(90deg, rgba(3, 3, 12, 0.95) 0%, rgba(3, 3, 12, 0.8) 70%, rgba(3, 3, 12, 0) 100%); pointer-events: auto; display: flex; flex-direction: column; justify-content: center; }
+    .garage-panel h2 { font-size: 38px; color: var(--cy); text-shadow: 0 0 15px var(--cy); margin-bottom: 20px; letter-spacing: 3px; text-transform: uppercase; }
+    .vehicle-name { font-size: 36px; font-weight: bold; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+    .vehicle-lore { font-size: 15px; color: #9bd; line-height: 1.6; margin-bottom: 30px; min-height: 80px; }
 
     .center { align-items: center; justify-content: center; background: rgba(5, 5, 16, 0.86); }
-    .card { background: rgba(4, 12, 30, 0.95); border: 1px solid var(--cy); border-radius: 10px; padding: 20px; width: 95%; max-width: 500px; }
-    .card h2 { margin: 0 0 10px; color: var(--cy); font-size: 24px; text-align: center; }
+    .card { background: rgba(4, 12, 30, 0.95); border: 2px solid var(--cy); border-radius: 10px; box-shadow: 0 0 40px rgba(0, 255, 255, 0.3); padding: 26px 34px; max-height: 94vh; overflow-y: auto; max-width: 94vw; width: auto; }
+    .card h2 { margin: 0 0 4px; color: var(--cy); font-size: 38px; letter-spacing: 3px; text-shadow: 0 0 15px var(--cy); text-align: center; }
 
-    #loading { position: absolute; inset: 0; z-index: 30; background: #000004; display: flex; align-items: center; justify-content: center; color: var(--cy); font-size: 20px; }
+    #loading { position: absolute; inset: 0; z-index: 30; background: #000004; display: flex; align-items: center; justify-content: center; color: var(--cy); font-size: 22px; letter-spacing: 4px; text-transform: uppercase; }
+    #fullscreen-btn { position: absolute; top: 20px; right: 20px; z-index: 100; padding: 8px 12px; font-size: 12px; border-width: 1px; pointer-events: auto; background: rgba(0, 20, 40, 0.5); border-radius: 0; }
 
-    /* Fullscreen Button - adjusted for mobile */
-    #fullscreen-btn { position: absolute; top: 10px; right: 10px; z-index: 100; padding: 6px 10px; font-size: 10px; pointer-events: auto; background: rgba(0, 20, 40, 0.5); border: 1px solid var(--cy); border-radius: 4px; color: var(--cy); }
+    /* ---------- MOBILE OVERRIDES ---------- */
+    @media (max-width: 768px) {
+      #top-hud { top: 10px; width: 95%; max-width: 600px; gap: 10px; }
+      #top-hud .big { font-size: 24px; }
+      #top-hud .sub { font-size: 10px; }
+      #timer-box { padding: 10px; flex: 1; }
+      #timer-value { font-size: 24px; }
+
+      #leaderboard { top: 10px; left: 10px; min-width: 120px; padding: 8px 10px; font-size: 11px; }
+      #leaderboard .dot { width: 6px; height: 6px; }
+
+      #minimap-box { top: 10px; right: 10px; padding: 6px; display: none; }
+      @media (min-width: 600px) { #minimap-box { display: block; } }
+      #minimap { width: 120px; height: 120px; }
+
+      #toast { font-size: 20px; }
+      #countdown { font-size: 100px; }
+
+      #bottom-hud { bottom: 190px; left: 10px; right: 10px; }
+      #speed-value { font-size: 30px; }
+      #speed-unit { font-size: 10px; }
+      .bar-container { width: 120px; height: 12px; }
+
+      #menu { align-items: center; justify-content: center; }
+      .panel { width: 100%; max-width: 480px; padding: 20px; background: rgba(3, 3, 12, 0.85); border: 1px solid var(--cy); border-radius: 10px; margin: 20px; }
+
+      .group { margin-bottom: 12px; }
+      .group > label { font-size: 11px; }
+      .seg { gap: 4px; }
+      button { padding: 8px 12px; font-size: 13px; border-radius: 4px; }
+      button.primary { font-size: 18px; padding: 12px; }
+      .card h2 { font-size: 24px; }
+
+      #menu-title { position: static; transform: none; margin-bottom: 20px; display: none; }
+      #menu-title h1 { font-size: 4rem; }
+
+      .garage-panel { width: 100%; padding: 20px; }
+      .garage-panel h2 { font-size: 24px; }
+      .vehicle-name { font-size: 24px; }
+      .vehicle-lore { font-size: 13px; min-height: 60px; }
+
+      .card { padding: 20px; border: 1px solid var(--cy); border-radius: 10px; width: 95%; }
+
+      #fullscreen-btn { top: 10px; right: 10px; padding: 6px 10px; font-size: 10px; border-radius: 4px; }
+    }
   </style>
 </head>
 <body>
-<div id="loading">Loading</div>
+<div id="loading" class="hidden">Loading</div>
 
 <button id="fullscreen-btn">⛶ Fullscreen</button>
 
 <div id="menu" class="screen hidden">
-  <div class="panel">
-    <h1 style="color:var(--cy); text-align:center; margin-top:0; font-size:28px; letter-spacing:4px;">GRAVITY X</h1>
+  <div id="menu-title">
+    <h1>GRAVITY X</h1>
+    <div class="tagline">Created by Prasanta Mahanta</div>
+  </div>
 
+  <div class="panel">
     <div class="group"><label>Mode</label>
       <div class="seg" data-key="mode">
-        <button data-v="quick" class="active">Quick</button>
-        <button data-v="champ">Champ</button>
+        <button data-v="quick" class="active">Quick Race</button>
+        <button data-v="champ">Championship</button>
         <button data-v="tt">Time Trial</button>
       </div>
     </div>
 
     <div class="group" id="g-track"><label>Track</label>
       <div class="seg" data-key="trackId" id="track-seg"></div>
+      <div class="info" id="track-info"></div>
     </div>
 
     <div class="group"><label>Laps</label>
       <div class="seg" data-key="laps" data-num="1">
-        <button data-v="1">1</button><button data-v="3" class="active">3</button><button data-v="5">5</button>
+        <button data-v="1">1</button><button data-v="3" class="active">3</button><button data-v="5">5</button><button data-v="10">10</button>
       </div>
     </div>
 
@@ -166,28 +228,32 @@
   </div>
 </div>
 
-<div id="garage-screen" class="screen center hidden">
-  <div class="card">
-    <h2 id="garage-name">Phantom</h2>
-    <div id="garage-lore" style="font-size:12px; color:#9bd; margin-bottom:15px;">Lore goes here.</div>
+<div id="garage-screen" class="screen hidden">
+  <div class="garage-panel">
+    <h2>Garage</h2>
+    <div class="vehicle-name" id="garage-name">Phantom</div>
+    <div class="vehicle-lore" id="garage-lore">Lore goes here.</div>
     <div id="garage-stats"></div>
-    <div style="display:flex; gap:10px; margin-top:20px;">
-      <button id="garage-prev" style="flex:1;">&#9664;</button>
-      <button id="garage-back" style="flex:1; border-color:var(--mg); color:var(--mg);">Back</button>
-      <button id="garage-select" style="flex:1; background:rgba(0,255,255,0.2);">Equip</button>
-      <button id="garage-next" style="flex:1;">&#9654;</button>
+    <div class="picker-nav" style="display:flex; justify-content:space-between; margin-bottom:30px; margin-top:20px;">
+      <button id="garage-prev" style="padding: 15px 30px; font-size: 18px;">&#9664; Prev</button>
+      <button id="garage-next" style="padding: 15px 30px; font-size: 18px;">Next &#9654;</button>
+    </div>
+    <div class="garage-actions" style="display:flex; gap:15px; margin-top:auto;">
+      <button id="garage-back" style="flex: 1; border-color: #ff2a7a; color: #ff2a7a;">Back</button>
+      <button id="garage-select" style="flex: 2; background: rgba(0, 255, 255, 0.2);">Equip</button>
     </div>
   </div>
 </div>
 
-<div id="records-screen" class="screen center hidden">
-  <div class="card">
+<div id="records-screen" class="screen center hidden" style="pointer-events: auto; z-index: 15;">
+  <div class="card" style="min-width: 500px;">
     <h2>RECORDS</h2>
-    <div class="stat-grid" id="rec-stats" style="display:flex; justify-content:space-around; text-align:center; margin-bottom:15px; font-size:12px; color:#9bd;"></div>
-    <div id="rec-laps-table" style="font-size:12px; font-family:monospace;"></div>
-    <div style="display:flex; gap:10px; margin-top:20px;">
-      <button id="rec-back-btn" style="flex:1;">Back</button>
-      <button id="rec-reset-btn" style="border-color:var(--mg); color:var(--mg);">Reset</button>
+    <div class="stat-grid" id="rec-stats" style="display:flex; gap:14px; justify-content:center; margin:10px 0 4px; text-align:center; font-size:11px; color:#9bd;"></div>
+    <h3 style="color: var(--cy); margin-top: 20px; margin-bottom: 10px; text-align:center;">BEST LAPS</h3>
+    <div id="rec-laps-table"></div>
+    <div class="row" style="display:flex; justify-content:center; gap:10px; margin-top: 30px;">
+      <button id="rec-back-btn" style="flex: 1;">Back</button>
+      <button id="rec-reset-btn" style="border-color: #ff2a7a; color: #ff2a7a;">Reset</button>
     </div>
   </div>
 </div>
@@ -199,22 +265,22 @@
     <div class="box" id="timer-box">
       <div class="stat-label" style="color:#fff">Time</div>
       <div class="big" id="timer-value">00:00.00</div>
-      <div class="sub">Last <span id="last-lap">--</span> &nbsp; Best <span id="best-lap">--</span></div>
+      <div class="sub">Last <span id="last-lap">--:--.--</span> &nbsp; Best <span id="best-lap">--:--.--</span></div>
     </div>
-    <div class="box" style="padding:5px 10px;"><div class="stat-label">Pos</div><div class="big" id="pos-value">1/5</div></div>
+    <div class="box" style="padding:5px 10px;"><div class="stat-label">Position</div><div class="big" id="pos-value">1/8</div></div>
   </div>
   <div id="minimap-box" class="box"><canvas id="minimap" width="340" height="340"></canvas></div>
   <div id="toast"></div>
 
   <div id="bottom-hud">
-    <div class="box" style="padding:8px;"><div class="stat-label">Speed</div><div><span id="speed-value">0</span><span id="speed-unit">km/h</span></div></div>
+    <div class="box" style="padding:8px;"><div class="stat-label">Velocity</div><div><span id="speed-value">0</span><span id="speed-unit">km/h</span></div></div>
     <div style="display:flex; flex-direction:column; gap:5px;">
       <div class="box" style="padding:5px 10px; text-align:right;">
-        <div class="stat-label" style="color:var(--mg); font-size:10px;">Hull</div>
+        <div class="stat-label" style="color:var(--mg); font-size:10px;">Hull Integrity</div>
         <div class="bar-container" style="width:100px;"><div id="health-bar"></div></div>
       </div>
       <div class="box" style="padding:5px 10px; text-align:right;">
-        <div class="stat-label" style="font-size:10px;">Boost</div>
+        <div class="stat-label" style="font-size:10px;">Boost Energy</div>
         <div class="bar-container" style="width:100px;"><div id="boost-bar"></div></div>
       </div>
     </div>
@@ -224,7 +290,7 @@
 <div id="countdown" class="hidden"></div>
 
 <div id="results" class="screen center hidden">
-  <div class="card">
+  <div class="card" style="min-width: 560px">
     <h2 id="res-title">FINISH</h2>
     <div id="res-sub" style="text-align:center; font-size:12px; color:#9bd; margin-bottom:15px;"></div>
     <div id="res-badges" style="display:flex; gap:5px; justify-content:center; margin-bottom:15px;"></div>
@@ -244,8 +310,8 @@
   </div>
 </div>
 
-<!-- TOUCH CONTROLS ALWAYS VISIBLE -->
-<div id="touch-controls">
+<!-- TOUCH CONTROLS (Hidden by default for desktop) -->
+<div id="touch-controls" class="hidden">
   <div id="touch-steer"><div id="touch-steer-knob"></div></div>
   <div id="touch-buttons">
     <div class="t-btn" id="t-btn-drift">DRIFT</div>
