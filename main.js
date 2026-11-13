@@ -443,11 +443,6 @@ const touchControls = document.getElementById('touch-controls');
 const steerPad = document.getElementById('touch-steer');
 const steerKnob = document.getElementById('touch-steer-knob');
 
-// --- TOUCH CONTROLS ---
-const touchControls = document.getElementById('touch-controls');
-const steerPad = document.getElementById('touch-steer');
-const steerKnob = document.getElementById('touch-steer-knob');
-
 // Only show touch controls on actual touch devices
 const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
 if (isTouchDevice) {
