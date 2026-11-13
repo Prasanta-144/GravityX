@@ -451,15 +451,6 @@ touchControls.classList.remove('hidden');
 
 let steerActive = false, steerStartX = 0, steerStartY = 0, touchSteerValue = 0;
 
-// MOBILE: show touch controls on touch devices OR Android/iOS
-const isTouch =
-  window.matchMedia("(pointer: coarse)").matches ||
-  /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
-if (isTouch) touchControls.classList.remove('hidden');
-
-// MOBILE: floating virtual joystick
-let steerActive = false, steerStartX = 0, steerStartY = 0, touchSteerValue = 0;
-
 steerPad.addEventListener('touchstart', (e) => {
   e.preventDefault();
   steerActive = true;
