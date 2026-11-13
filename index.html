@@ -88,8 +88,7 @@
     #menu { background: transparent; pointer-events: none; align-items: center; justify-content: center; }
 
     /* Desktop Menu Panel */
-    .panel { width: 480px; max-width: 100%; padding: 28px 34px; background: linear-gradient(90deg, rgba(3, 3, 12, 0.95) 0%, rgba(3, 3, 12, 0.8) 70%, rgba(3, 3, 12, 0) 100%); pointer-events: auto; border: none; border-radius: 0; margin: 0; }
-
+    .panel { position: absolute; top: 0; bottom: 0; left: 0; width: 480px; max-width: 100%; padding: 50px 34px; background: linear-gradient(90deg, rgba(3, 3, 12, 0.95) 0%, rgba(3, 3, 12, 0.8) 70%, rgba(3, 3, 12, 0) 100%); pointer-events: auto; border: none; border-radius: 0; margin: 0; overflow-y: auto; }
     #menu-title { position: fixed; top: 50%; left: calc(50% + 240px); transform: translate(-50%, -50%); text-align: center; pointer-events: none; z-index: 1; width: 100%; }
     #menu-title h1 { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 8rem; margin: 0; color: transparent; -webkit-text-stroke: 2px rgba(0, 255, 255, 0.4); text-shadow: 0 0 30px rgba(0, 255, 255, 0.2); letter-spacing: 12px; font-weight: 300; white-space: nowrap; }
     #menu-title .tagline { font-size: 1rem; color: rgba(255, 255, 255, 0.4); letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; font-family: 'Segoe UI', Roboto, sans-serif; }
