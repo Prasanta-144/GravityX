@@ -443,10 +443,17 @@ const touchControls = document.getElementById('touch-controls');
 const steerPad = document.getElementById('touch-steer');
 const steerKnob = document.getElementById('touch-steer-knob');
 
-// FORCE TOUCH CONTROLS TO SHOW
-touchControls.classList.remove('hidden');
+// --- TOUCH CONTROLS ---
+const touchControls = document.getElementById('touch-controls');
+const steerPad = document.getElementById('touch-steer');
+const steerKnob = document.getElementById('touch-steer-knob');
 
-// SINGLE declaration of variables (Fix for Cloudflare build)
+// Only show touch controls on actual touch devices
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
+if (isTouchDevice) {
+  touchControls.classList.remove('hidden');
+}
+
 let steerActive = false, steerStartX = 0, steerStartY = 0, touchSteerValue = 0;
 
 steerPad.addEventListener('touchstart', (e) => {
